@@ -1,18 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import services from './services';
+import UserCards from './components/UserCards';
+
 
 const App = () => {
 
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
     (async () => {
-      const users = await services.getAllUsers();
-      console.log(users);
+      const newUsers = await services.getAllUsers();
+      // console.log(newUsers);
+      setUsers(newUsers);
     })();
   }, []);
 
+
+
   return (
-    <h1>Moron</h1>
+    <>
+      <UserCards users={users}/>
+    </>
   );
 };
 
