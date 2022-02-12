@@ -23,8 +23,11 @@ const UserCard = ({ user }) => {
             flexDirection: 'column'
           },
           title: {
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
             marginTop: '1rem',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           },
           subheader: {
             fontStyle: 'italic',
