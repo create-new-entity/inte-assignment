@@ -7,8 +7,14 @@ const getAllUsers = async () => {
   return res.data;
 };
 
+const getUserDetails = async (id) => {
+  const res = await axios.get(`${baseURL}/${id}`);
+  return res.data;
+};
+
 const services = {
-  getAllUsers
+  getAllUsers,
+  getUserDetails
 };
 
 export default services;

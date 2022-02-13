@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
 import services from './services';
 import UserCards from './components/UserCards';
+import UserDetails from './components/UserDetails';
 
 
 const App = () => {
@@ -20,7 +25,12 @@ const App = () => {
 
   return (
     <>
-      <UserCards users={users}/>
+      <Router>
+        <Routes>
+          <Route path="/:id" element={<UserDetails/>}/>
+          <Route path="/" element={<UserCards users={users}/>}/>
+        </Routes>
+      </Router>
     </>
   );
 };

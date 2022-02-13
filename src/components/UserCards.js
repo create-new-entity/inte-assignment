@@ -1,15 +1,32 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import UserCard from './UserCard';
 
 const UserCards = ({ users }) => {
-  return (
-    <Grid container spacing={3}>
-      {
-        users.map((user, index) => <UserCard user={user} key={index}/>)
+
+  const theme = createTheme({
+    components: {
+
+      MuiGrid: {
+        styleOverrides: {
+          root: {
+            padding: '4rem'
+          }
+        }
       }
-    </Grid>
+    }
+  });
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Grid container spacing={3}>
+        {
+          users.map((user, index) => <UserCard user={user} key={index}/>)
+        }
+      </Grid>
+    </ThemeProvider>
   );
 };
 

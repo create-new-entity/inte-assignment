@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
@@ -11,6 +14,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const UserCard = ({ user }) => {
+
+  const navigate = useNavigate();
 
   const linkColor = '#29ACA7';
 
@@ -68,6 +73,10 @@ const UserCard = ({ user }) => {
     },
   });
 
+  const clickHandler = () => {
+    navigate(`/${user.id}`);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Grid item xs={12} sm={6} md={3} lg={2}>
@@ -86,7 +95,7 @@ const UserCard = ({ user }) => {
               { `http://${user.website}` }
             </Link>
             <CardActions>
-              <Button variant="contained" size="small">More Details</Button>
+              <Button variant="contained" size="small" onClick={clickHandler}>More Details</Button>
             </CardActions>
           </Stack>
         </Card>
